@@ -1,15 +1,24 @@
 const logger = require('../lib/logger');
+const streams = require('../lib/streams');
 
-function getNew(req, res) {
-  res.end('new stream id');
+function getNew(req, res, next) {
+  const streamId = uuid();
+
+  streams.getNewId().then(function(streamId) {
+    res.json({ streamId });
+  }).catch(next);
 }
 
 function activate(req, res) {
-  res.end(`activated ${req.params.id}`);
+  streams.activate(streamId, userId).then(function () {
+    res.json({ status: 'ok' });
+  });
 }
 
 function deactivate(req, res) {
-  res.end(`deactivated ${req.params.id}`);
+  streams.activate(streamId, userId).then(function () {
+    res.json({ status: 'ok' });
+  });
 }
 
 module.exports = {

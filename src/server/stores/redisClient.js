@@ -18,7 +18,7 @@ client.on('end', function (error) {
     logger.error('Redis Client Ended!');
 });
 
-function add(where, what) {
+function add(what, where) {
   return Promise(function (resolve, reject) {
     client.sadd(where, what, function (error, result) {
       if (error) {
@@ -31,7 +31,7 @@ function add(where, what) {
   });
 }
 
-function remove(where, what) {
+function remove(what, where) {
   return Promise(function (resolve, reject) {
     client.srem(where, what, function (error, result) {
       if (error) {
@@ -44,7 +44,7 @@ function remove(where, what) {
   });
 }
 
-function check(where, what) {
+function check(what, where) {
   return Promise(function (resolve, reject) {
     client.sismember(where, what, function (error, result) {
       if (error) {

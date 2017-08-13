@@ -1,4 +1,5 @@
 const streams = require('./streams');
+const users = require('./users');
 const logger = require('../lib/logger');
 
 function webRoot(req, res) {
@@ -9,6 +10,8 @@ function webRoot(req, res) {
 module.exports = function(app) {
 
   app.get('/', webRoot);
+
+  app.get('/users/new', users.getNew);
 
   app.get('/streams/new', streams.getNew);
 
