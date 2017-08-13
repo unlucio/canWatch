@@ -57,6 +57,10 @@ function setViewing(userId, sreamId) {
   });
 }
 
+function stopViewing(userId, sreamId) {
+  return client.remove(sreamId, userId);
+}
+
 mosule.exports = {
   getNewId,
   exists,

@@ -9,16 +9,16 @@ function getNew(req, res, next) {
   }).catch(next);
 }
 
-function activate(req, res) {
+function activate(req, res, next) {
   streams.activate(streamId, userId).then(function () {
     res.json({ status: 'ok' });
-  });
+  }).catch(next);
 }
 
-function deactivate(req, res) {
-  streams.activate(streamId, userId).then(function () {
+function deactivate(req, res, next) {
+  streams.deactivate(streamId, userId).then(function () {
     res.json({ status: 'ok' });
-  });
+  }).catch(next);
 }
 
 module.exports = {
