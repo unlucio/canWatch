@@ -1,0 +1,26 @@
+{
+  "name": "canwatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server/index.js",
+    "dev": "docker-compose up",
+    "devstop": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unlucio/canWatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unlucio/canWatch/issues"
+  },
+  "homepage": "https://github.com/unlucio/canWatch#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "lodash": "^4.17.4",
+    "morgan": "^1.8.2"
+  }
+}
