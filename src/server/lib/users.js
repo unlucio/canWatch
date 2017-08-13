@@ -38,8 +38,8 @@ function isLareadyViewing(userId, streamId) {
 
 function canWatchStream(userId, streamId) {
    const checks = [
-    hasSlots(userId),
-    isLareadyViewing(userId, streamId)
+    hasSlots(userId).catch(() => false),
+    isLareadyViewing(userId, streamId).catch(() => false)
   ];
 
   return Promise.all(checks).then(function (hasSlots, isWatching) {
