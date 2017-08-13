@@ -4,15 +4,13 @@ const morgan = require('morgan')
 const app = express();
 const server = require('http').Server(app);
 const logger = require('./lib/logger');
+const routes =  require('./routes');
 
 
 app.use(morgan('combined'));
 app.set('port', process.env.PORT || 3000);
 
-app.get('/', function (req, res) {
-  logger.info('someone called /');
-  res.end('yo');
-});
+routes(app);
 
 server.listen(app.get('port'), function () {
   logger.info('CanWatch listening on ' + app.get('port'))

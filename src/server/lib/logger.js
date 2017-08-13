@@ -3,13 +3,13 @@ const winston = require('winston');
 const Graylog2Transport = require('winston-graylog2');
 const logLevel = 'info';
 
-const onGraylog = true;
+const onGraylog = false;
 const graylogConfig = {
-    servers: [{host: 'graylog', port: 12201}],
-    hostname: 'myServer',
-    facility: 'canwatch',
-    bufferSize: 1400
-  }
+  servers: [{host: 'graylog', port: 12201}],
+  hostname: 'myServer',
+  facility: 'canwatch',
+  bufferSize: 1400
+};
 
 const transports = [
   new (winston.transports.Console)({ timestamp: true, level: logLevel}),
