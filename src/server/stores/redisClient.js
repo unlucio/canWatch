@@ -1,17 +1,17 @@
-const logger = require('./logger');
+const logger = require('../lib/logger');
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient({host: 'redis' , port: 6379});
 
 client.on('connect', function () {
     logger.info('Redis Client Connected!');
 });
 
 client.on('reconnecting', function () {
-    logger.warning('Redis Client Reconnecting...');
+    logger.warn('Redis Client Reconnecting...');
 });
 
 client.on('error', function (error) {
-    logger.error('Redis Client Error: ', err);
+    logger.error('Redis Client Error: ', error);
 });
 
 client.on('end', function (error) {
@@ -19,7 +19,7 @@ client.on('end', function (error) {
 });
 
 function add(what, where) {
-  return Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     client.sadd(where, what, function (error, result) {
       if (error) {
         reject(error);
@@ -32,7 +32,7 @@ function add(what, where) {
 }
 
 function remove(what, where) {
-  return Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     client.srem(where, what, function (error, result) {
       if (error) {
         reject(error);
@@ -45,7 +45,7 @@ function remove(what, where) {
 }
 
 function check(what, where) {
-  return Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     client.sismember(where, what, function (error, result) {
       if (error) {
         reject(error);

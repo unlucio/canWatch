@@ -1,9 +1,7 @@
 const logger = require('../lib/logger');
 const streams = require('../lib/streams');
 
-function getNew(req, res, next) {
-  const streamId = uuid();
-
+function getNewId(req, res, next) {
   streams.getNewId().then(function(streamId) {
     res.json({ streamId });
   }).catch(next);
@@ -22,7 +20,7 @@ function deactivate(req, res, next) {
 }
 
 module.exports = {
-  getNew,
+  getNewId,
   activate,
   deactivate,
 }

@@ -1,5 +1,5 @@
 const uuid = require('uuid/v4');
-const store = require('../../stores/redisClient');
+const store = require('../stores/redisClient');
 
 const setName = 'validUsers';
 
@@ -61,7 +61,7 @@ function stopViewing(userId, sreamId) {
   return client.remove(sreamId, userId);
 }
 
-mosule.exports = {
+module.exports = {
   getNewId,
   exists,
   setViewing

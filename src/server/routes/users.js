@@ -2,10 +2,8 @@ const logger = require('../lib/logger');
 const users = require('../lib/users');
 
 function getNewId(req, res, next) {
-  const streamId = uuid();
-
-  users.getNewId().then(function(streamId) {
-    res.json({ streamId });
+  users.getNewId().then(function(userId) {
+    res.json({ userId });
   }).catch(next);
 }
 

@@ -5,6 +5,5 @@ MAINTAINER Luciano Colosio "unlucio@gmail.com"
 COPY . /app
 WORKDIR /app
 
-RUN npm install
-
-
+RUN npm install && \
+    npm install -g gulp

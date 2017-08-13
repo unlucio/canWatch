@@ -11,9 +11,9 @@ module.exports = function(app) {
 
   app.get('/', webRoot);
 
-  app.get('/users/new', users.getNew);
+  app.get('/users/new', users.getNewId);
 
-  app.get('/streams/new', streams.getNew);
+  app.get('/streams/new', streams.getNewId);
 
   app.put('/streams/:id/activate', streams.activate)
 

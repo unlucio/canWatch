@@ -1,15 +1,14 @@
 const uuid = require('uuid/v4');
-const store = require('../../stores/redisClient');
-const user = require('./user');
+const store = require('../stores/redisClient');
+const user = require('./users');
 
 const setName = 'validStreams';
 
 function getNewId() {
   const streamId = uuid();
 
-  return store.add(streamId, setName).then(function(result) {
-    console.log('=====> streamId result: ', result);
-    return(streamId);
+  return store.add(streamId, setName).then(function() {
+    return streamId;
   });
 }
 
