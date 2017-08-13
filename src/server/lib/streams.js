@@ -30,7 +30,9 @@ function validateData(streamId, userId) {
     user.exists(userId).catch(() => false)
   ];
 
-  return Promise.all(checks).then(function (validStream, validUser) {
+  return Promise.all(checks).then(function (result) {
+    const [validStream, validUser] = result;
+
     if (validStream && validUser) {
       return true;
     }
