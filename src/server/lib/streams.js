@@ -1,6 +1,7 @@
 const uuid = require('uuid/v4');
 const store = require('../stores/redisClient');
 const user = require('./users');
+const logger = require('./logger');
 
 const setName = 'validStreams';
 
@@ -26,8 +27,14 @@ function exists(streamId) {
 
 function validateData(streamId, userId) {
   const checks = [
-    exists(streamId).catch(() => false),
-    user.exists(userId).catch(() => false)
+    exists(streamId).catch(function(){
+      logger.error(`Nonexistent stramId ${streamId}`);
+      return false;
+    }),
+    user.exists(userId).catch(function(){
+      logger.error(`Nonexistent userId ${userId}`);
+      return false;
+    })
   ];
 
   return Promise.all(checks).then(function (result) {
