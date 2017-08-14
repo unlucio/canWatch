@@ -1,12 +1,13 @@
-
-function ret() {
-  return new Promise(function(resolve) {
-    resolve(1);
-  });
-}
+const counter = 0;
 
 module.exports = {
-  getNewId: ret,
-  activate: ret,
-  deactivate: ret
+  getNewId() {
+    return Promise.resolve(`stream-id#${++counter}`);
+  },
+  activate() {
+    return Promise.resolve();
+  },
+  deactivate() {
+    return Promise.resolve();
+  }
 };
