@@ -6,7 +6,8 @@
   "scripts": {
     "start": "gulp dev-server",
     "dev": "docker-compose up",
-    "devstop": "docker-compose down"
+    "devstop": "docker-compose down",
+    "test": "mocha --recursive -b -t 20000 tests/server"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,13 @@
   },
   "homepage": "https://github.com/unlucio/canWatch#readme",
   "dependencies": {
+    "chai": "^4.1.1",
+    "chai-as-promised": "^7.1.1",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
+    "mocha": "^3.5.0",
     "morgan": "^1.8.2",
+    "proxyquire": "^1.8.0",
     "redis": "^2.8.0",
     "uuid": "^3.1.0",
     "winston": "^2.3.1",

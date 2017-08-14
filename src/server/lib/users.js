@@ -25,10 +25,12 @@ function exists(userId) {
 }
 
 function hasSlots(userId) {
-  client.count(userId).then(function (result) {
+  return store.count(userId).then(function (result) {
     if (result < 3) {
       return true;
     }
+
+    return false;
   });
 }
 
@@ -53,18 +55,19 @@ function canWatchStream(userId, streamId) {
   });
 }
 
-function setViewing(userId, sreamId) {
-  canWatchStream(userId, streamId).then(function () {
-    return store.add(sreamId, userId);
+function setViewing(userId, streamId) {
+  return canWatchStream(userId, streamId).then(function () {
+    return store.add(streamId, userId);
   });
 }
 
-function stopViewing(userId, sreamId) {
-  return client.remove(sreamId, userId);
+function stopViewing(userId, streamId) {
+  return store.remove(streamId, userId);
 }
 
 module.exports = {
   getNewId,
   exists,
-  setViewing
+  setViewing,
+  stopViewing
 };
