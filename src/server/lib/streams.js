@@ -8,8 +8,6 @@ const setName = 'validStreams';
 function getNewId() {
   const streamId = uuid();
 
-  console.log('streamId: ', streamId);
-
   return store.add(streamId, setName).then(function() {
     return streamId;
   });
@@ -17,8 +15,6 @@ function getNewId() {
 
 function exists(streamId) {
   return store.check(streamId, setName).then(function(result) {
-    console.log('=====> userId result: ', result);
-
     if (result) {
       return true;
     }
