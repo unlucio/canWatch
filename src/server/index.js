@@ -5,8 +5,8 @@ const app = express();
 const server = require('http').Server(app);
 const logger = require('./lib/logger');
 const routes =  require('./routes');
+const port = process.env.PORT || 3000;
 
-app.set('port', process.env.PORT || 3000);
 app.use(morgan('combined'));
 
 app.use(function(req, res, next) {
@@ -16,6 +16,6 @@ app.use(function(req, res, next) {
 
 routes(app);
 
-server.listen(app.get('port'), function () {
-  logger.info('CanWatch listening on ' + app.get('port'))
+server.listen(port, function () {
+  logger.info(`CanWatch listening on ${port}`)
 });

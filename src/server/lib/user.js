@@ -37,10 +37,7 @@ function isLareadyViewing(userId, streamId) {
 
 function canWatchStream(userId, streamId) {
    const checks = [
-    hasSlots(userId).catch(function(error) {
-      console.log('Error; ', error);
-      return false
-    }),
+    hasSlots(userId).catch(() => false),
     isLareadyViewing(userId, streamId).catch(() => false)
   ];
 

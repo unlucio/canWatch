@@ -41,15 +41,15 @@ function deactivateStream({ userId, streamId }) {
 }
 
 function getIds() {
-    return Promise.all([request('/users/new'), request('/streams/new')]).then(function(result) {
+    return Promise.all([request('/users/newId'), request('/streams/newId')]).then(function(result) {
         const [ userRes, streamsRes ] = result;
         return Object.assign(userRes, streamsRes);
     });
 }
 
 module.exports = {
-    getUserId: () => request('/users/new'),
-    getStremId: () => request('/streams/new'),
+    getUserId: () => request('/users/newId'),
+    getStremId: () => request('/streams/newId'),
     getIds,
     activateStream,
     deactivateStream

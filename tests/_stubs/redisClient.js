@@ -1,7 +1,3 @@
-function ret() {
-  return Promise.resolve(1);
-}
-
 const store = {};
 
 module.exports = {

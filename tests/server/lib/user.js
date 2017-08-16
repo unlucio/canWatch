@@ -9,7 +9,7 @@ const stubs = {
   }
 };
 
-const user = proxyquire.noCallThru().load('../../../src/server/lib/users', stubs);
+const user = proxyquire.noCallThru().load('../../../src/server/lib/user', stubs);
 
 const userId = 'user-id';
 const streamId = 'stream-id'

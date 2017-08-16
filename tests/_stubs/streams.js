@@ -1,8 +1,6 @@
-const counter = 0;
-
 module.exports = {
   getNewId() {
-    return Promise.resolve(`stream-id#${++counter}`);
+    return Promise.resolve();
   },
   activate() {
     return Promise.resolve();

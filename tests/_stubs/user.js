@@ -4,7 +4,7 @@ const viewers = {};
 
 module.exports = {
   getNewId() {
-    return Promise.resolve(`user-id#${++counter}`);
+    return Promise.resolve();
   },
   exists() {
     return Promise.resolve(true);

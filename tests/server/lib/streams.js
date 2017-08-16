@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire');
 
 const stubs = {
   '../stores/redisClient': require('../../_stubs/redisClient'),
-  './users': require('../../_stubs/users'),
+  './users': require('../../_stubs/user'),
   'uuid/v4': function() {
     return 'stream-id'
   }

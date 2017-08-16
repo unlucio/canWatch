@@ -1,5 +1,5 @@
 const streams = require('./streams');
-const users = require('./users');
+const user = require('./user');
 const logger = require('../lib/logger');
 
 function webRoot(req, res) {
@@ -11,16 +11,16 @@ module.exports = function(app) {
 
   app.get('/', webRoot);
 
-  app.get('/users/new', users.getNewId);
+  app.get('/users/newId', user.getNewId);
 
-  app.get('/streams/new', streams.getNewId);
+  app.get('/streams/newId', streams.getNewId);
 
-  app.put('/streams/:streamId/activate', streams.activate)
+  app.put('/streams/:streamId/activate', streams.activate);
 
-  app.put('/streams/:streamId/deactivate', streams.deactivate)
+  app.put('/streams/:streamId/deactivate', streams.deactivate);
 
   app.use(function(error, req, res, next) {
     logger.error(error);
-    res.json({ error: error.message });
+    res.json({ status: 'ko', error: error.message });
   })
 }
