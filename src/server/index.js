@@ -10,8 +10,9 @@ const port = process.env.PORT || 3000;
 app.use(morgan('combined'));
 
 app.use(function(req, res, next) {
-    req.userId = req.headers['x-userid'];
-    next();
+  req.userId = req.headers['x-userid'];
+
+  next();
 });
 
 routes(app);

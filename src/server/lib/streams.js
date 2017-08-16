@@ -27,10 +27,12 @@ function validateData(streamId, userId) {
   const checks = [
     exists(streamId).catch(function(){
       logger.error('Nonexistent stramId: ', streamId);
+
       return false;
     }),
     user.exists(userId).catch(function(){
       logger.error('Nonexistent userId: ', streamId);
+
       return false;
     })
   ];

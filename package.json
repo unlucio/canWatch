@@ -6,9 +6,9 @@
   "scripts": {
     "start": "gulp dev-server",
     "dev": "docker-compose up",
-    "devstop": "docker-compose down",
-    "test": "mocha --recursive -b -t 20000 tests/server",
-    "functional": "mocha --recursive -b -t 20000 tests/functional"
+    "devs-top": "docker-compose down",
+    "unit": "mocha --recursive -b -t 20000 tests/server",
+    "endtoend": "mocha --recursive -b -t 20000 tests/endtoend"
   },
   "repository": {
     "type": "git",

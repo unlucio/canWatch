@@ -10,6 +10,7 @@ function getNewId(req, res, next) {
 
 function activate(req, res, next) {
   const streamId = _.get(req, 'params.streamId');
+
   streams.activate(streamId, req.userId).then(function () {
     res.json({ status: 'ok' });
   }).catch(next);
@@ -17,6 +18,7 @@ function activate(req, res, next) {
 
 function deactivate(req, res, next) {
   const streamId = _.get(req, 'params.streamId');
+
   streams.deactivate(streamId, req.userId).then(function () {
     res.json({ status: 'ok' });
   }).catch(next);
