@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp dev-server",
+    "start": "node devServer.js",
     "dev": "docker-compose up",
-    "devs-top": "docker-compose down",
+    "dev-stop": "docker-compose down",
     "unit": "mocha --recursive -b -t 20000 tests/server",
     "endtoend": "mocha --recursive -b -t 20000 tests/endtoend"
   },
@@ -30,12 +30,9 @@
     "winston-graylog2": "^0.6.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-nodemon": "^2.2.1",
     "superagent": "^3.5.2",
     "mocha": "^3.5.0",
     "chai": "^4.1.1",
-    "chai-as-promised": "^7.1.1",
     "proxyquire": "^1.8.0"
   }
 }
