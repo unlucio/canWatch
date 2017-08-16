@@ -7,15 +7,12 @@ function getNewId() {
   const userId = uuid();
 
   return store.add(userId, setName).then(function(result) {
-    console.log('=====> userId result: ', result);
     return(userId);
   });
 }
 
 function exists(userId) {
   return store.check(userId, setName).then(function(result) {
-    console.log('=====> userId result: ', result);
-
     if (result) {
       return true;
     }
@@ -40,7 +37,7 @@ function isLareadyViewing(userId, streamId) {
 
 function canWatchStream(userId, streamId) {
    const checks = [
-    hasSlots(userId).catch(function(error) { 
+    hasSlots(userId).catch(function(error) {
       console.log('Error; ', error);
       return false
     }),
@@ -48,7 +45,6 @@ function canWatchStream(userId, streamId) {
   ];
 
   return Promise.all(checks).then(function (result) {
-    console.log('canWatchStream: ', result);
     const [hasSlots, isWatching] = result;
 
     if (isWatching || hasSlots) {

@@ -19,6 +19,7 @@ client.on('end', function (error) {
 });
 
 function add(what, where) {
+  logger.debug(`Redis:: add what(${what}), where(${where})`);
   return new Promise(function (resolve, reject) {
     client.sadd(where, what, function (error, result) {
       if (error) {
@@ -32,6 +33,7 @@ function add(what, where) {
 }
 
 function remove(what, where) {
+  logger.debug(`Redis:: remove what(${what}), where(${where})`);
   return new Promise(function (resolve, reject) {
     client.srem(where, what, function (error, result) {
       if (error) {
@@ -45,6 +47,7 @@ function remove(what, where) {
 }
 
 function check(what, where) {
+  logger.debug(`Redis:: check what(${what}), where(${where})`);
   return new Promise(function (resolve, reject) {
     client.sismember(where, what, function (error, result) {
       if (error) {
@@ -58,6 +61,7 @@ function check(what, where) {
 }
 
 function count(where) {
+  logger.debug(`Redis:: count where(${where})`);
   return new Promise(function (resolve, reject) {
     client.scard(where, function (error, result) {
       if (error) {

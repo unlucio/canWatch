@@ -16,6 +16,7 @@ function request(url, method, userId) {
 
         req.end(function(error, res) {
             if (error) {
+                console.error('error!!!!!', error);
                 reject(error);
                 return;
             }
@@ -25,14 +26,14 @@ function request(url, method, userId) {
     });
 }
 
-function activate({ userId, streamId }) {
+function activateStream({ userId, streamId }) {
     return request(`/streams/${streamId}/activate`, 'put', userId).then(function(result) {
-        console.log('activate result: ', result);
+        console.log('Activate result: ', result);
         return { userId, streamId };
     });
 }
 
-function deactivate({ userId, streamId }) {
+function deactivateStream({ userId, streamId }) {
     return request(`/streams/${streamId}/deactivate`, 'put', userId).then(function(result) {
         console.log('deactivate result: ', result);
         return { userId, streamId };
@@ -46,27 +47,10 @@ function getIds() {
     });
 }
 
-console.log('====== Happy Path');
-getIds().then(function(ids) {
-    return activate(ids);
-}).then(function(ids) {
-    return deactivate(ids);
-})
-.catch(function (error) {
-    console.error(error);
-});
-
-console.log('====== /Happy Path');
-getIds().then(function(ids) {
-    return activate(ids);
-}).then(function(ids) {
-    return activate(ids);
-}).then(function(ids) {
-    return activate(ids);
-}).then(function(ids) {
-    return activate(ids);
-})
-.catch(function (error) {
-    console.error(error);
-});
-console.log('====== /Too many streams');
+module.exports = {
+    getUserId: () => request('/users/new'),
+    getStremId: () => request('/streams/new'),
+    getIds,
+    activateStream,
+    deactivateStream
+}
