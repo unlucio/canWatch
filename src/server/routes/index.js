@@ -15,9 +15,12 @@ module.exports = function(app) {
 
   app.get('/streams/new', streams.getNewId);
 
-  app.put('/streams/:id/activate', streams.activate)
+  app.put('/streams/:streamId/activate', streams.activate)
 
-  app.put('/streams/:id/deactivate', streams.deactivate)
+  app.put('/streams/:streamId/deactivate', streams.deactivate)
 
-
+  app.use(function(error, req, res, next) {
+    logger.error(error);
+    res.json({ error: error.message });
+  })
 }

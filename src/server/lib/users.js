@@ -40,11 +40,15 @@ function isLareadyViewing(userId, streamId) {
 
 function canWatchStream(userId, streamId) {
    const checks = [
-    hasSlots(userId).catch(() => false),
+    hasSlots(userId).catch(function(error) { 
+      console.log('Error; ', error);
+      return false
+    }),
     isLareadyViewing(userId, streamId).catch(() => false)
   ];
 
   return Promise.all(checks).then(function (result) {
+    console.log('canWatchStream: ', result);
     const [hasSlots, isWatching] = result;
 
     if (isWatching || hasSlots) {

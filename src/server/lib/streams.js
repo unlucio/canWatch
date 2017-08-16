@@ -8,6 +8,8 @@ const setName = 'validStreams';
 function getNewId() {
   const streamId = uuid();
 
+  console.log('streamId: ', streamId);
+
   return store.add(streamId, setName).then(function() {
     return streamId;
   });

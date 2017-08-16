@@ -58,8 +58,8 @@ function check(what, where) {
 }
 
 function count(where) {
-  return Promise(function (resolve, reject) {
-    client.scard(where, what, function (error, result) {
+  return new Promise(function (resolve, reject) {
+    client.scard(where, function (error, result) {
       if (error) {
         reject(error);
         return;
