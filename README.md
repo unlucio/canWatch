@@ -45,10 +45,10 @@ $ curl -i https://canwatchb.herokuapp.com/
 
 
 #### Available Routes
-**obtaining a new user id**: GET /users/newId
-**obtaining a new stream id**: GET /streams/newId
-**starting a stream**: PATCH[^1] /streams/{streamId}/activate
-**stopping a stream**: PATCH[^1] /streams/{streamId}/deactivate
+- **obtaining a new user id**: GET /users/newId
+- **obtaining a new stream id**: GET /streams/newId
+- **starting a stream**: PATCH[^1] /streams/{streamId}/activate
+- **stopping a stream**: PATCH[^1] /streams/{streamId}/deactivate
 
 The `activate` and `deactivate` routes expect an `x-userid` HTTP header
 with a valid userId.
