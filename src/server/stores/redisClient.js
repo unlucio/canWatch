@@ -1,7 +1,8 @@
 const logger = require('../lib/logger');
 const redis = require('redis');
 const host = process.env.REDIS_URL || 'redis';
-const client = redis.createClient({ host });
+const port = process.env.REDIS_PORT || 6379;
+const client = redis.createClient({host: 'redis' , port: 6379});
 
 let clientOk = false;
 
@@ -17,6 +18,7 @@ client.on('reconnecting', function () {
 
 client.on('error', function (error) {
     logger.error('Redis Client Error: ', error);
+    logger.error('Redis Client env: ', process.env);
 });
 
 client.on('end', function (error) {
