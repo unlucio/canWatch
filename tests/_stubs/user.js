@@ -9,7 +9,7 @@ module.exports = {
   exists() {
     return Promise.resolve(true);
   },
-  setViewing(userId, streamId) {
+  startViewing(userId, streamId) {
     viewers[userId] = viewers[userId] || [];
 
     if (viewers[userId].length > 2) {

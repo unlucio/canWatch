@@ -30,7 +30,7 @@ describe('User Module', function() {
   });
 
   it('Should deactivate a stream: ', function(done) {
-    user.setViewing(userId, streamId).then(function(result) {
+    user.startViewing(userId, streamId).then(function(result) {
       done();
     }).catch(done);
   });
@@ -42,12 +42,12 @@ describe('User Module', function() {
   });
 
   it('Should reject more than 3 streams: ', function(done) {
-    user.setViewing('user-id#1', 'stream-id#1').then(function() {
-      return user.setViewing('user-id#1', 'stream-id#2');
+    user.startViewing('user-id#1', 'stream-id#1').then(function() {
+      return user.startViewing('user-id#1', 'stream-id#2');
     }).then(function() {
-      return user.setViewing('user-id#1', 'stream-id#3');
+      return user.startViewing('user-id#1', 'stream-id#3');
     }).then(function() {
-      user.setViewing('user-id#1', 'stream-id#4').then(function(result) {
+      user.startViewing('user-id#1', 'stream-id#4').then(function(result) {
         done(new Error('The user was able to activate a 4th stream'));
       }).catch(function() {
         done();
