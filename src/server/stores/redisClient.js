@@ -2,12 +2,16 @@ const logger = require('../lib/logger');
 const redis = require('redis');
 const client = redis.createClient({host: 'redis' , port: 6379});
 
+let clientOk = false;
+
 client.on('connect', function () {
     logger.info('Redis Client Connected!');
+    clientOk = true;
 });
 
 client.on('reconnecting', function () {
     logger.warn('Redis Client Reconnecting...');
+    clientOk = false;
 });
 
 client.on('error', function (error) {
@@ -16,6 +20,7 @@ client.on('error', function (error) {
 
 client.on('end', function (error) {
     logger.error('Redis Client Ended!');
+    clientOk = false;
 });
 
 function add(what, where) {
@@ -78,5 +83,8 @@ module.exports = {
   add,
   remove,
   check,
-  count
+  count,
+  isConnected() {
+    return clientOk;
+  }
 };

@@ -9,12 +9,14 @@ function getNewId() {
   const streamId = uuid();
 
   return store.add(streamId, setName).then(function() {
+    logger.debug(`StreamLib:: new stream id: ${streamId}`);
     return streamId;
   });
 }
 
 function exists(streamId) {
   return store.check(streamId, setName).then(function(result) {
+    logger.debug('StreamLib:: extsts result: ', result);
     if (result) {
       return true;
     }
@@ -38,6 +40,7 @@ function validateData(streamId, userId) {
   ];
 
   return Promise.all(checks).then(function (result) {
+    logger.debug('StreamLib:: validateData result: ', result);
     const [validStream, validUser] = result;
 
     if (validStream && validUser) {
@@ -50,7 +53,7 @@ function validateData(streamId, userId) {
 
 function activate(streamId, userId) {
   return  validateData(streamId, userId).then(function() {
-    return user.setViewing(userId, streamId);
+    return user.startViewing(userId, streamId);
   });
 }
 

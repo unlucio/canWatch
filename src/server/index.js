@@ -5,15 +5,14 @@ const app = express();
 const server = require('http').Server(app);
 const logger = require('./lib/logger');
 const routes =  require('./routes');
+const middlewares =  require('./middlewares');
+
 const port = process.env.PORT || 3000;
 
 app.use(morgan('combined'));
 
-app.use(function(req, res, next) {
-  req.userId = req.headers['x-userid'];
-
-  next();
-});
+app.use(middlewares.storeConnectionCheck);
+app.use(middlewares.getUserId);
 
 routes(app);
 
