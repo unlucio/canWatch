@@ -29,14 +29,14 @@ function request(path, method, userId) {
 }
 
 function activateStream({ userId, streamId }) {
-    return request(`/streams/${streamId}/activate`, 'put', userId).then(function(result) {
+    return request(`/streams/${streamId}/activate`, 'patch', userId).then(function(result) {
         console.log('Activate result: ', result);
         return { userId, streamId };
     });
 }
 
 function deactivateStream({ userId, streamId }) {
-    return request(`/streams/${streamId}/deactivate`, 'put', userId).then(function(result) {
+    return request(`/streams/${streamId}/deactivate`, 'patch', userId).then(function(result) {
         console.log('deactivate result: ', result);
         return { userId, streamId };
     });

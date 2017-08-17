@@ -16,9 +16,11 @@ module.exports = function(app) {
 
   app.get('/streams/newId', streams.getNewId);
 
-  app.put('/streams/:streamId/activate', streams.activate);
+  app.patch('/streams/:streamId/activate', streams.activate);
+  app.post('/streams/:streamId/activate', streams.activate);
 
-  app.put('/streams/:streamId/deactivate', streams.deactivate);
+  app.patch('/streams/:streamId/deactivate', streams.deactivate);
+  app.post('/streams/:streamId/deactivate', streams.deactivate);
 
   app.use(function(error, req, res, next) {
     let status = 403;

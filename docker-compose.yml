@@ -20,6 +20,15 @@ services:
     networks:
       - backend
 
+  ################
+  # Log facility:
+  # Follows the configuration for Graylog
+  # as log facility, currently deactivated
+  # because the containers are quite verbose
+  # disrupting development.
+  # The service is intended to log in a graylog
+  # facility when live.
+  ###############
   # mongo:
   #   image: "mongo:3"
   #   networks:
