@@ -1,4 +1,4 @@
-const client = require('../client');
+const client = require('../../src/client');
 
 describe('Testing Should activate Too Many Streams', function() {
   let userId;

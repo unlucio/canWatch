@@ -1,13 +1,16 @@
 const superagent = require('superagent');
+const { URL } = require('url');
 
-const host = 'http://localhost:9004';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+const host = process.env.HOST|| 'http://localhost:9004';
 
-function request(url, method, userId) {
+function request(path, method, userId) {
     method = method || 'get';
-    const uri = `${host}${url}`
+    const url = new URL(host);
+    url.pathname = path;
 
     return new Promise(function(resolve, reject) {
-        const req = superagent[method](uri);
+        const req = superagent[method](url.href);
         req.set('Accept', 'application/json')
 
         if (userId) {
@@ -39,17 +42,9 @@ function deactivateStream({ userId, streamId }) {
     });
 }
 
-function getIds() {
-    return Promise.all([request('/users/newId'), request('/streams/newId')]).then(function(result) {
-        const [ userRes, streamsRes ] = result;
-        return Object.assign(userRes, streamsRes);
-    });
-}
-
 module.exports = {
     getUserId: () => request('/users/newId'),
     getStremId: () => request('/streams/newId'),
-    getIds,
     activateStream,
     deactivateStream
 }

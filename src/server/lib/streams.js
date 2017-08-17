@@ -21,7 +21,7 @@ function exists(streamId) {
       return true;
     }
 
-    throw Error('Invalid Stream Id');
+    return Promise.reject(new Error('Invalid Stream Id'));
   });
 }
 
@@ -47,7 +47,7 @@ function validateData(streamId, userId) {
       return true;
     }
 
-    throw Error('Invalid Data.');
+    return Promise.reject(new Error('Invalid Data.'));
   });
 }
 

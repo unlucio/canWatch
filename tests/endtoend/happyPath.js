@@ -1,4 +1,4 @@
-const client = require('../client');
+const client = require('../../src/client');
 
 describe('Testing happy path', function() {
   let userId;

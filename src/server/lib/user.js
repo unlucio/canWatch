@@ -20,7 +20,7 @@ function exists(userId) {
       return true;
     }
 
-    throw Error('Invalid User Id');
+    return Promise.reject(new Error('Invalid User Id'));
   });
 }
 
@@ -53,7 +53,7 @@ function canWatchStream(userId, streamId) {
       return true;
     }
 
-    throw Error('Stream Limit Reached');
+    return Promise.reject(new Error('Stream Limit Reached'));
   });
 }
 
