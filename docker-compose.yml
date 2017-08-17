@@ -11,7 +11,7 @@ services:
       PORT: 80
     ports:
       - "9004:80"
-    command: bash -c 'npm install && npm start'
+    command: bash -c 'npm install && node devServer.js'
 
   redis:
     image: redis:alpine

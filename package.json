@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node devServer.js",
+    "start": "node ./src/server/index.js",
     "dev": "docker-compose up",
     "dev-stop": "docker-compose down",
     "unit": "mocha --recursive -b -t 20000 tests/server",
