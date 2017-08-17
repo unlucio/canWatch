@@ -1,8 +1,9 @@
 const logger = require('../lib/logger');
 const redis = require('redis');
-const host = process.env.REDIS_URL || 'redis';
-const port = process.env.REDIS_PORT || 6379;
-const client = redis.createClient({host: 'redis' , port: 6379});
+const url = process.env.REDIS_URL;
+const params = (url) ? { url } : {host: 'redis' , port: 6379};
+
+const client = redis.createClient(params);
 
 let clientOk = false;
 
