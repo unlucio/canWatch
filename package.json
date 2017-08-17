@@ -30,9 +30,10 @@
     "winston-graylog2": "^0.6.0"
   },
   "devDependencies": {
-    "superagent": "^3.5.2",
-    "mocha": "^3.5.0",
     "chai": "^4.1.1",
-    "proxyquire": "^1.8.0"
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "proxyquire": "^1.8.0",
+    "superagent": "^3.5.2"
   }
 }

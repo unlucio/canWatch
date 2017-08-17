@@ -50,12 +50,13 @@ describe('Testing Should activate Too Many Streams', function() {
   it('Should not activate stream 4', function(done) {
     client.getStremId().then(function({ streamId }) {
       streamIds.push(streamId);
-      return client.activateStream({ userId, streamId }).catch(function(error) {
-        console.log('failed Should activate stream 4: ', error);
+      return client.activateStream({ userId, streamId }).then(() => done())
+      .catch(function(error) {
+        console.log(`failed Should activate stream 4 (sattus: ${error.status}): `, error.response.body);
 
         done();
       });
-    }).then(function(){ done() ;});
+    });
   });
 
 });

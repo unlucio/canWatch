@@ -16,7 +16,6 @@ function request(url, method, userId) {
 
         req.end(function(error, res) {
             if (error) {
-                console.error('error!!!!!', error);
                 reject(error);
                 return;
             }

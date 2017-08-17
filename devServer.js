@@ -1,5 +1,5 @@
-const nodemon = require('gulp-nodemon');
-  const envOptions = {
+const nodemon = require('nodemon');
+const envOptions = {
   PORT: process.env.PORT,
   NODE_TLS_REJECT_UNAUTHORIZED: 0
 };
