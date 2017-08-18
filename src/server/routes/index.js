@@ -29,7 +29,7 @@ module.exports = function(app) {
       status = 404
     }
 
-    logger.error(error);
+    logger.error('Error:', error.message);
     res.status(status).json({ status: 'ko', error: error.message });
   })
 }

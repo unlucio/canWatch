@@ -19,3 +19,7 @@ routes(app);
 server.listen(port, function () {
   logger.info(`CanWatch listening on ${port}`)
 });
+
+process.on('uncaughtException', function(err) {
+  logger.error('uncaughtException: ', err);
+})
