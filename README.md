@@ -28,7 +28,9 @@ $ npm run endtoend
 
 A demo environment is also available, you can run end to end tests with the following command:
 ```bash
-$ HOST='https://canwatch.unlucio.com/' npm run endtoend
+$ HOST='http://canwatch.unlucio.com/' npm run endtoend
+#or
+$ HOST='https://canwatch.herokuapp.com/' npm run endtoend
 ```
 
 Unit tests can be run with:
